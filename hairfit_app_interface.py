@@ -123,16 +123,17 @@ class PDF(FPDF):
         self.ln(5)
 
     def add_result(self, data_dict, prompt):
-        self.set_font("Arial", "B", 12)
-        self.cell(0, 10, f"고객 이름: {data_dict['고객 이름']} / 연락처: {data_dict['연락처']}", ln=True)
-        self.cell(0, 10, f"디자이너: {data_dict['디자이너']} / 날짜: {data_dict['날짜']}", ln=True)
-        self.ln(5)
-        self.set_font("Arial", size=11)
-        for key, value in data_dict.items():
-            self.cell(0, 10, f"{key}: {value}", ln=True)
-        self.ln(5)
-       self.multi_cell(0, 10, "[AI 프롬프트]")
-self.multi_cell(0, 10, prompt)
+    self.set_font("Arial", "B", 12)
+    self.cell(0, 10, f"고객 이름: {data_dict['고객 이름']} / 연락처: {data_dict['연락처']}", ln=True)
+    self.cell(0, 10, f"디자이너: {data_dict['디자이너']} / 날짜: {data_dict['날짜']}", ln=True)
+    self.ln(5)
+    self.set_font("Arial", size=11)
+    for key, value in data_dict.items():
+        self.cell(0, 10, f"{key}: {value}", ln=True)
+    self.ln(5)
+    self.multi_cell(0, 10, "[AI 프롬프트]")
+    self.multi_cell(0, 10, prompt)
+
 
 
 
@@ -161,5 +162,3 @@ if st.button("🪄 이미지 생성 실행"):
             st.image(image_url, caption="생성된 AI 이미지")
         except Exception as e:
             st.error(f"이미지 생성 실패: {e}")
-
-         
