@@ -131,8 +131,12 @@ class PDF(FPDF):
         for key, value in data_dict.items():
             self.cell(0, 10, f"{key}: {value}", ln=True)
         self.ln(5)
-        self.multi_cell(0, 10, f"[AI 프롬프트]
-{prompt}")
+       self.multi_cell(0, 10, "[AI 프롬프트]")
+self.multi_cell(0, 10, prompt)
+
+
+
+
 
 if st.button("📄 PDF 리포트 저장하기"):
     pdf = PDF()
@@ -157,3 +161,5 @@ if st.button("🪄 이미지 생성 실행"):
             st.image(image_url, caption="생성된 AI 이미지")
         except Exception as e:
             st.error(f"이미지 생성 실패: {e}")
+
+         
